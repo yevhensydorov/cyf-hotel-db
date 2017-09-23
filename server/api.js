@@ -40,8 +40,8 @@ router.put('/discount', function(req, res) {
 });
 
 router.post('/reservations', function(req, res) {
-  // TODO read req.body.reservation and insert into DB
-  res.status(200).end();
+  // TODO read req.body.reservation, look up price by room id and insert reservation into DB
+  res.status(200).json(req.body.reservation);
 });
 
 router.get('/reservations', function(req, res) {
