@@ -33,7 +33,10 @@ router.get('/room-types', function(req, res) {
 
 router.put('/discount', function(req, res) {
   // TODO read roomId from req.query.id and update discount
-  res.status(200).end();
+  res.status(200).json({
+    id: req.query.id,
+    discount: req.body.discount
+  });
 });
 
 router.post('/reservations', function(req, res) {
