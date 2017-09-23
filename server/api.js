@@ -16,7 +16,7 @@ router.get('/customers', function(req, res) {
 
 router.post('/customers', function(req, res) {
   // TODO read req.body.customer and insert into DB
-  res.status(200).end();
+  res.status(200).json( req.body.customer );
 });
 
 router.get('/room-types', function(req, res) {
