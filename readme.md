@@ -32,6 +32,7 @@ Go to http://localhost:8080/ to get started.
 
 Before getting started, we need to complete the database schema. The database provided contains 4 tables - you must create the tables `reviews` and `reservations` in order to complete it. You should set up these tables as follows:
 
+```
 reservations
 id INTEGER PRIMARY KEY AUTOINCREMENT
 customer_id INTEGER 
@@ -47,6 +48,7 @@ room_type_id INTEGER
 rating INTEGER
 comment TEXT
 review_date DATE
+```
 
 You can do this however you choose - through the sqlite command line interfact, or via a GUI such as [SQLiteStudio](https://sqlitestudio.pl/index.rvt).
 
@@ -66,13 +68,21 @@ Take the data being POSTed to the /customers endpoint and insert it into the dat
 
 **User story:** As a guest, I want to browse the types of rooms available at the hotel in ascending price order so I can decide which room I'd like to book
 
+We store prices in pennies as `integer`s rather than as `float`s as they tend to cause less problems when performing calculations.
+
+Where the `current_price` does not equal the `standard_price`, show the `standard_price` with a line through, and the `current_price` immediately after (e.g. ~~£80~~ £70).
+
 ### Exercise 4
 
 **User story:** As a staff member, I want to be able to apply a discount to the rate of a specific type of room so that it will encourage bookings
 
+You can check this is working correctly by cross-referencing with the interface in exercise 3.
+
 ### Exercise 5
 
 **User story:** As a guest, I want to book a room so that I have somewhere to stay on my holiday
+
+Bear in mind that the `room_price` should be set to the `current_price` of the `room_type` table. 
 
 ### Exercise 6
 
@@ -97,4 +107,7 @@ Take the data being POSTed to the /customers endpoint and insert it into the dat
 ### Stretch Goals
 
 * Can you add validation to ensure erroneous data isn't added to the endpoints that insert data into the database?
+* Can you add error messages to describe the errors that are encountered?
+* Can you add a success message when data has been added/updated successfully?
 * Can you ensure each customer added has a unique email address?
+* Can you replace the input fields that ask for an ID with a dropdown allowing the user to select one of the existing records?

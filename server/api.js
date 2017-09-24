@@ -43,8 +43,8 @@ router.get('/room-types', function(req, res) {
     roomtypes: [{
       id: 2,
       name: 'premium',
-      price: 6000,
-      discount: 50
+      standard_price: 60,
+      current_price: 50
     }
   ]});
 });
