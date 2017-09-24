@@ -1,8 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const filename = './database/database.sqlite';
+const sqlite3    = require( 'sqlite3' ).verbose();
+
+// open the database
+let db = new sqlite3.Database(filename);
   
 router.get('/customers', function(req, res) {
-  // TODO return DB row here
+
   res.status(200).json({
     customers: [{
       id: 2,
@@ -12,6 +17,19 @@ router.get('/customers', function(req, res) {
       email: 'laurie@ainley.com'
     }
   ]});
+
+  // TODO return DB row here
+  /*db.serialize(function() {
+
+    var sql = 'select * from customers';
+
+    db.all(sql, [],(err, rows ) => {
+      res.status(200).json({
+        customers: rows
+      });  
+    });
+  }); */
+
 });
 
 router.post('/customers', function(req, res) {
