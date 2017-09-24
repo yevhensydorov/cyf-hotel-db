@@ -18,7 +18,7 @@ router.get('/customers', function(req, res) {
     }
   ]});
 
-  // TODO return DB row here
+  // TODO comment out response above and uncomment the below
   /*db.serialize(function() {
 
     var sql = 'select * from customers';

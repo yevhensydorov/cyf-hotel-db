@@ -5,8 +5,6 @@ const bodyparser = require( 'body-parser' );
 const router     = require( './server/api' );
 const app        = express();
 
-const filename = `./database/database.sqlite`;
-
 app.use( express.static( 'public' ));
 app.use( bodyparser.json() );
 
