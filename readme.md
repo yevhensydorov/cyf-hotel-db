@@ -26,6 +26,8 @@ Below is the database schema that will be used for the exercise.
 
 In order to complete the exercises below, you will need to edit the code in `/server/api.js`, generally guided by the TODO comments.
 
+Go to http://localhost:8080/ to get started.
+
 ### Exercise 0
 
 Before getting started, we need to complete the database schema. The database provided contains 4 tables - you must create the tables `reviews` and `reservations` in order to complete it. You should set up these tables as follows:
@@ -46,6 +48,8 @@ rating INTEGER
 comment TEXT
 review_date DATE
 
+You can do this however you choose - through the sqlite command line interfact, or via a GUI such as [SQLiteStudio](https://sqlitestudio.pl/index.rvt).
+
 ### Exercise 1
 
 **User story:** As a staff member, I want to be able to view a list of customers
@@ -55,6 +59,8 @@ An example has been provided for this exercise, showing how to interact with the
 ### Exercise 2
 
 **User story:** As a guest, I want to register my details so that I can check availability for my stay
+
+Take the data being POSTed to the /customers endpoint and insert it into the database.
 
 ### Exercise 3
 
@@ -87,3 +93,8 @@ An example has been provided for this exercise, showing how to interact with the
 ### Exercise 10
 
 **User story:** As hotel manager, I want to display average rating and reviews of each room type so that guests can feel comfortable about the quality of the hotel
+
+### Stretch Goals
+
+* Can you add validation to ensure erroneous data isn't added to the endpoints that insert data into the database?
+* Can you ensure each customer added has a unique email address?
