@@ -12,9 +12,10 @@ This exercise involves implementing various aspects of a hotel booking system. I
 
 The tasks build on your previous experience using SQL with SQLite and Node.js. The key components of the application are as follows:
 
-`index.js` - sets up the application for use
-`server/api.js` - routes and application logic for the API 
-`public/*` - each folder contains the front-end code that interacts with the API for each exercise below
+* `index.js` - sets up the application for use
+* `server/api.js` - routes and application logic for the API 
+* `public/*` - each folder contains the front-end code that interacts with the API for each exercise below
+* `database/database.sqlite` - SQLite database containing some seed data
 
 Below is the database schema that will be used for the exercise.
 
