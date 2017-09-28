@@ -55,7 +55,7 @@ You can do this however you choose - through the sqlite command line interfact, 
 
 ### Exercise 1
 
-**User story:** As a staff member, I want to be able to view a list of customers
+**User story:** As a staff member, I want to be able to view a list of customers so that I can see who has visited our hotel
 
 An example has been provided for this exercise, showing how to interact with the SQLite database. Simply uncomment the TODO section, and comment out the existing JSON response being returned.
 
@@ -89,21 +89,41 @@ Bear in mind that the `room_price` should be set to the `current_price` of the `
 
 **User story:** As a staff member, I want to be able to search for a booking by the customer's reservation ID or name so that I can confirm their stay
 
+You will need to implement both search methods in this page.
+
 ### Exercise 7
 
-**User story:** As a staff member, I want to be able to see a list of the bookings over the next month in chronological order so that I can prepare the hotel
+**User story:** As a staff member, I want to be able to see a list of the bookings within the next 30 days of a specified date in chronological order so that I can prepare the hotel
+
+This interface should show a list of upcoming bookings, including customer name and the type of room (e.g. King) - not just the IDs
 
 ### Exercise 8
 
 **User story:** As a staff member, I want to be able to create an invoice including any surcharges so that I can request payment from guests
 
+This interface should return an invoice for the customer that includes:
+
+* Customer name
+* Check in date
+* Check out date
+* Room number
+* Room type
+* Room cost
+* Surcharges
+* Total cost
+* Paid (whether the invoice is due or has been paid already)
+
 ### Exercise 9
 
 **User story:** As a guest, I want to be able to leave a review so that I can inform others about the quality of the rooms
 
+The guest should be able to submit a review for the type of room they stayed in, including a rating from 1-5 stars.
+
 ### Exercise 10
 
 **User story:** As hotel manager, I want to display average rating and reviews of each room type so that guests can feel comfortable about the quality of the hotel
+
+For this exercise, you are on your own! You will need to create the HTML UI, the API endpoint, and the relevant queries to fetch the aggregated rating for each room, plus the reviews for each. This will require joins to fetch the required data and an operation to calculate the average rating. You might find it helpful to copy the UI boilerplate from the previous exercises, but feel free to try writing the whole interface yourself.
 
 ### Stretch Goals
 

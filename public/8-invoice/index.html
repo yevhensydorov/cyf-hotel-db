@@ -37,7 +37,7 @@
                 <td><input id="surcharges" type="text" class="form-control" placeholder="Surcharges" name="surcharges" /></td>
                 <td><input id="total" type="text" class="form-control" placeholder="Total" name="total" /></td>
                 <td><input id="invoiceDate" type="text" class="form-control" placeholder="YYYY-MM-DD" name="invoiceDate" /></td>
-                <td><input id="paid" type="text" class="form-control" placeholder="true/false" name="paid" /></td>
+                <td style="vertical-align: middle"><input id="paid" type="checkbox" class="form-control" name="paid" /></td>
                 <td><button type="submit" class="btn btn-primary fn-submit">Submit invoice</button></td>
               </tr>
             </tbody>
@@ -62,10 +62,10 @@
           url: '/api/invoice?reservationId='+$('#reservationId').val(),
           data: JSON.stringify({
             invoice:{
-              surcharges: +$('#surcharges').val(),
-              total:+$('#total').val(),
-              invoiceDate: +$('#invoiceDate').val(),
-              paid: +$('#paid').val(),
+              surcharges: $('#surcharges').val(),
+              total: $('#total').val(),
+              invoiceDate: $('#invoiceDate').val(),
+              paid: $('#paid').val(),
             }
           }),
           contentType: 'application/json',

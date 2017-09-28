@@ -24,7 +24,7 @@
                 <th>Customer id</th>
                 <th>Room type id</th>
                 <th>Rating</th>
-                <th>Comment</th>
+                <th>Review</th>
                 <th>Review date</th>
                 <th></th>
               </tr>
@@ -35,8 +35,8 @@
                   <input id="customerId" type="text" class="form-control" placeholder="Customer id" name="customerId" />
                 </td>
                 <td><input id="roomTypeId" type="text" class="form-control" placeholder="Room type id" name="roomTypeId" /></td>
-                <td><input id="rating" type="text" class="form-control" placeholder="Rating" name="rating" /></td>
-                <td><input id="comment" type="text" class="form-control" placeholder="Comment" name="comment" /></td>
+                <td><input id="rating" type="number" min="1" max="5" class="form-control" placeholder="Rating" name="rating" /></td>
+                <td><textarea id="comment" type="text" class="form-control" placeholder="Comment" name="comment"></textarea></td>
                 <td><input id="reviewDate" type="text" class="form-control" placeholder="YYYY-MM-DD" name="reviewDate" /></td>
                 <td><button type="submit" class="btn btn-primary fn-submit">Submit review</button></td>
               </tr>
