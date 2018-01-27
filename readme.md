@@ -1,134 +1,83 @@
-# Code Your Future DB Exercise 3
+![CYF Workshop](./assets/workshop.png)
 
-## Installation
+# CYF Hotel Workshop
 
-Install the dependencies using `npm i`.
-
-Launch server using `npm start` and go to [http://localhost:8080/](http://localhost:8080/)
-
-## Introduction
+This workshop is for the [Node 3](https://codeyourfuture.github.io/syllabus-master/node-db/week-15/workshop.html) class, read [workshop brief](https://codeyourfuture.github.io/syllabus-master/node-db/week-15/brief.html) for more information.
 
 This exercise involves implementing various aspects of a hotel booking system. It involves a variety of operations on the database to fetch, insert and update data.
 
-The tasks build on your previous experience using SQL with SQLite and Node.js. The key components of the application are as follows:
-
 * `index.js` - sets up the application for use
-* `server/api.js` - routes and application logic for the API 
-* `public/*` - each folder contains the front-end code that interacts with the API for each exercise below
-* `database/database.sqlite` - SQLite database containing some seed data
+* `api/` - routes and application logic for the API
+* `views` - handlebar templates
+* `public/*` - each folder contains the front-end code that interacts with the API
+* `assets/*` - assets including fake data, CSS, JS, images
 
-Below is the database schema that will be used for the exercise.
+## Installation
 
-## Database Schema
+Install the dependencies using `npm install`.
+
+In order to launch the project run `npm start` and access the website at [http://localhost:8080/](http://localhost:8080/)
+
+## Data
 
 ![ERD](http://i.imgur.com/Wlqfao1.png)
 
-## Instructions
+Our data contains three tables from the schema above
 
-In order to complete the exercises below, you will need to edit the code in `/server/api.js`, generally guided by the TODO comments.
+* `customers`
+* `invoices`
+* `reservations`
 
-Go to http://localhost:8080/ to get started.
+As mentioned in the brief, there is some data available but for privacy and security reasons you are not able to access the real data. Instead you can generate some fake data to develop your project.
 
-### Exercise 0
+In order to generate the data first run `npm install` and then `npm generate-data`. The fake data will be stored in `./assets/data`.
 
-Before getting started, we need to complete the database schema. The database provided contains 4 tables - you must create the tables `reviews` and `reservations` in order to complete it. You should set up these tables as follows:
+The data available are `customers.json`, `invoices.json` and `reservations.json`.
 
-```
-reservations
-id INTEGER PRIMARY KEY AUTOINCREMENT
-customer_id INTEGER 
-room_id INTEGER
-check_in_date DATE
-check_out_date DATE
-room_price INTEGER
+## User Stories
 
-reviews
-id INTEGER PRIMARY KEY AUTOINCREMENT
-customer_id INTEGER
-room_type_id INTEGER
-rating INTEGER
-comment TEXT
-review_date DATE
-```
+We are looking at three personas today:
 
-You can do this however you choose - through the sqlite command line interfact, or via a GUI such as [SQLiteStudio](https://sqlitestudio.pl/index.rvt).
+* Hotel Customer
+* Hotel Receptionist
+* Hotel Manager
 
-### Exercise 1
+The below user stories are exercises which your team can choose to implement
 
-**User story:** As a staff member, I want to be able to view a list of customers so that I can see who has visited our hotel
+`As a < type of user >, I want < some goal > so that < some reason >.`
 
-An example has been provided for this exercise, showing how to interact with the SQLite database. Simply uncomment the TODO section, and comment out the existing JSON response being returned.
+* As a _Hotel Manager_, I want to **view a list of all customers**
 
-### Exercise 2
+* As a _Hotel Manager_, I want to **view a customers details by their customer account ID**
 
-**User story:** As a guest, I want to register my details so that I can check availability for my stay
+* As a _Hotel Manager_, I want to **view a list of all invoice**
 
-Take the data being POSTed to the /customers endpoint and insert it into the database.
+* As a _Hotel Manager_, I want to **view a an invoice by it's Invoice ID**
 
-### Exercise 3
+* As a _Hotel Receptionist_, I want to **list of all reservations**
 
-**User story:** As a guest, I want to browse the types of rooms available at the hotel in ascending price order so I can decide which room I'd like to book
+* As a _Hotel Receptionist_, I want to **view a reservation by it's reservation ID**
 
-We store prices in pennies as `integer`s rather than as `float`s as they tend to cause less problems when performing calculations.
+* As a _Hotel Customer_, I want to **view my invoice page** so I know how much to pay.
 
-Where the `current_price` does not equal the `standard_price`, show the `standard_price` with a line through, and the `current_price` immediately after (e.g. ~~£80~~ £70).
+## Teams
 
-### Exercise 4
+Each team needs to set up a trello board and create tickets for the tickets for the work you will do.
 
-**User story:** As a staff member, I want to be able to apply a discount to the rate of a specific type of room so that it will encourage bookings
+* > Use [this example Trello board](https://trello.com/b/SK7a7cmr/team-heroes) to guide you
 
-You can check this is working correctly by cross-referencing with the interface in exercise 3.
+Your board should have: `Backlog`, `Todo`, `In Progress` and `Done` lanes, and tickets should be created in backlog from left and move along as they progress to done when they are finished.
 
-### Exercise 5
+Once you agree on your roles as backend/frontend/PM/User Experience, choose a user story from above and assign tickets to work on it collaboratively.
 
-**User story:** As a guest, I want to book a room so that I have somewhere to stay on my holiday
+Since you are working in teams you have to agree one fork to contribute to, then you need to give permission to the rest of your team members to be able to contribute to it.
 
-Bear in mind that the `room_price` should be set to the `current_price` of the `room_type` table. 
+> Read: [Github - Inviting collaborators to a personal repository](https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/)
 
-### Exercise 6
+## Deliverables
 
-**User story:** As a staff member, I want to be able to search for a booking by the customer's reservation ID or name so that I can confirm their stay
+Make sure you have:
 
-You will need to implement both search methods in this page.
-
-### Exercise 7
-
-**User story:** As a staff member, I want to be able to see a list of the bookings within the next 30 days of a specified date in chronological order so that I can prepare the hotel
-
-This interface should show a list of upcoming bookings, including customer name and the type of room (e.g. King) - not just the IDs
-
-### Exercise 8
-
-**User story:** As a staff member, I want to be able to create an invoice including any surcharges so that I can request payment from guests
-
-This interface should return an invoice for the customer that includes:
-
-* Customer name
-* Check in date
-* Check out date
-* Room number
-* Room type
-* Room cost
-* Surcharges
-* Total cost
-* Paid (whether the invoice is due or has been paid already)
-
-### Exercise 9
-
-**User story:** As a guest, I want to be able to leave a review so that I can inform others about the quality of the rooms
-
-The guest should be able to submit a review for the type of room they stayed in, including a rating from 1-5 stars.
-
-### Exercise 10
-
-**User story:** As hotel manager, I want to display average rating and reviews of each room type so that guests can feel comfortable about the quality of the hotel
-
-For this exercise, you are on your own! You will need to create the HTML UI, the API endpoint, and the relevant queries to fetch the aggregated rating for each room, plus the reviews for each. This will require joins to fetch the required data and an operation to calculate the average rating. You might find it helpful to copy the UI boilerplate from the previous exercises, but feel free to try writing the whole interface yourself.
-
-### Stretch Goals
-
-* Can you add validation to ensure erroneous data isn't added to the endpoints that insert data into the database?
-* Can you add error messages to describe the errors that are encountered?
-* Can you add a success message when data has been added/updated successfully?
-* Can you ensure each customer added has a unique email address?
-* Can you replace the input fields that ask for an ID with a dropdown allowing the user to select one of the existing records?
+* Something to present by end of the day, even if its a small feature
+* Setup your trello and have some tickets/ideas for next week
+* Consider how to collaborate together, whether by slack or meeting up
