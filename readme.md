@@ -2,7 +2,7 @@
 
 # CYF Hotel Workshop
 
-This workshop is for the [Node 3](https://codeyourfuture.github.io/syllabus-master/node-db/week-15/workshop.html) class, read [workshop brief](https://codeyourfuture.github.io/syllabus-master/node-db/week-15/brief.html) for more information.
+This workshop is for the [Node 3](https://codeyourfuture.github.io/syllabus-master/node-db/week-15/lesson.html) class, read [workshop brief](https://codeyourfuture.github.io/syllabus-master/node-db/week-15/workshop.html) for more information.
 
 This exercise involves implementing various aspects of a hotel booking system. It involves a variety of operations on the database to fetch, insert and update data.
 
