@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const customers = require("../assets/data/customers.json");
+const customers = require("../public/data/customers.json");
 
 router.get("/:id?", (req, res) => {
   if (req.params.id) {

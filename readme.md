@@ -30,7 +30,7 @@ Our data contains three tables from the schema above
 
 As mentioned in the brief, there is some data available but for privacy and security reasons you are not able to access the real data. Instead you can generate some fake data to develop your project.
 
-In order to generate the data first run `npm install` and then `npm generate-data`. The fake data will be stored in `./assets/data`.
+In order to generate the data first run `npm install` and then `npm generate-data`. The fake data will be stored in `./public/data`.
 
 The data available are `customers.json`, `invoices.json` and `reservations.json`.
 
