@@ -7,6 +7,7 @@ const invoice = require("./invoice");
 const reservations = require("./reservations");
 const reviews = require("./reviews");
 const roomTypes = require("./room-types");
+const class2 = require("./class2");
 
 router.use("/customers", customers);
 router.use("/discount", discount);
@@ -14,6 +15,7 @@ router.use("/invoice", invoice);
 router.use("/reservations", reservations);
 router.use("/reviews", reviews);
 router.use("/room-types", roomTypes);
+router.use("/api", class2);
 
 module.exports = router;
 
