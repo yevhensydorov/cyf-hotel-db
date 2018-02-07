@@ -88,4 +88,7 @@ router.put('/customers/:id', function(req, res) {
 // PLACEHOLDER for code
 
 
+// get `/reservations/details-between/:from_day/:to_day`
+// PLACEHOLDER for code
+
 module.exports = router;
