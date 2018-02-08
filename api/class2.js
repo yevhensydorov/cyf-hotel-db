@@ -1,8 +1,4 @@
 const express = require('express');
-const sqlite3 = require( 'sqlite3' ).verbose();
-
-const filename = './database/database.sqlite';
-let db = new sqlite3.Database(filename);
 
 const router = express.Router();
 
