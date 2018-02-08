@@ -26,9 +26,4 @@ Launch server using `npm start` and go to [http://localhost:8080/](http://localh
 
 ## Instructions
 
-In order to complete the exercises below, you will need to edit the code in `/server/class2.js`, generally guided by the TODO comments.
-
-
-# Class 2
-
-Use `/server/class2.js` for the exercises of this class.
+In order to complete the exercises described in the syllabus, you will need to edit the code in `/server/class2.js`, generally guided by the TODO comments.

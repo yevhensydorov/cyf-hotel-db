@@ -8,6 +8,7 @@ const router = express.Router();
 
 
 router.get('/customers', function(req, res) {
+  // TODO: fix code here
   res.status(200).json({
     customers: [{
       id: 2,
@@ -21,12 +22,12 @@ router.get('/customers', function(req, res) {
 
 
 router.get('/customers/:id', function(req, res) {
-  // PLACEHOLDER for code
+  // TODO: add for code here
 });
 
 
 router.get('/customers/:surname', function(req, res) {
-  // PLACEHOLDER for code
+  // TODO: add for code here
 });
 
 
@@ -39,7 +40,7 @@ router.post('/customers/', function(req, res) {
   //   email: 'laurie@ainley.com'
   // }
 
-  // PLACEHOLDER for code
+  // TODO: add for code here
 });
 
 
@@ -52,24 +53,24 @@ router.put('/customers/:id', function(req, res) {
   //   email: 'laurie@ainley.com'
   // }
 
-  // PLACEHOLDER for code
+  // TODO: add for code here
 });
 
 
 // get '/reservations'
-// PLACEHOLDER for code
+// TODO: add for code here
 
 
 // get '/reservations/:id'
-// PLACEHOLDER for code
+// TODO: add for code here
 
 
 // get '/reservations/starting-on/:startDate'
-// PLACEHOLDER for code
+// TODO: add for code here
 
 
 // get '/reservations/active-on/:date'
-// PLACEHOLDER for code
+// TODO: add for code here
 
 
 // post '/reservations'
@@ -81,14 +82,14 @@ router.put('/customers/:id', function(req, res) {
 //   check_out_date: '2018-01-22',
 //   room_price: 129.90
 // }
-// PLACEHOLDER for code
+// TODO: add for code here
 
 
 // get `/detailed-invoices'
-// PLACEHOLDER for code
+// TODO: add for code here
 
 
 // get `/reservations/details-between/:from_day/:to_day`
-// PLACEHOLDER for code
+// TODO: add for code here
 
 module.exports = router;
