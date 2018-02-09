@@ -18,12 +18,12 @@ router.get('/customers', function(req, res) {
 
 
 router.get('/customers/:id', function(req, res) {
-  // TODO: add for code here
+  // TODO: add code here
 });
 
 
 router.get('/customers/:surname', function(req, res) {
-  // TODO: add for code here
+  // TODO: add code here
 });
 
 
@@ -36,7 +36,7 @@ router.post('/customers/', function(req, res) {
   //   email: 'laurie@ainley.com'
   // }
 
-  // TODO: add for code here
+  // TODO: add code here
 });
 
 
@@ -49,24 +49,28 @@ router.put('/customers/:id', function(req, res) {
   //   email: 'laurie@ainley.com'
   // }
 
-  // TODO: add for code here
+  // TODO: add code here
 });
 
 
 // get '/reservations'
-// TODO: add for code here
+// TODO: add code here
 
 
 // get '/reservations/:id'
-// TODO: add for code here
+// TODO: add code here
+
+
+// delete '/reservations/:id'
+// TODO: add code here
 
 
 // get '/reservations/starting-on/:startDate'
-// TODO: add for code here
+// TODO: add code here
 
 
 // get '/reservations/active-on/:date'
-// TODO: add for code here
+// TODO: add code here
 
 
 // post '/reservations'
@@ -78,14 +82,14 @@ router.put('/customers/:id', function(req, res) {
 //   check_out_date: '2018-01-22',
 //   room_price: 129.90
 // }
-// TODO: add for code here
+// TODO: add code here
 
 
 // get `/detailed-invoices'
-// TODO: add for code here
+// TODO: add code here
 
 
 // get `/reservations/details-between/:from_day/:to_day`
-// TODO: add for code here
+// TODO: add code here
 
 module.exports = router;
