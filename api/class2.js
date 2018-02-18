@@ -7,7 +7,6 @@ const router = express.Router();
 let db = new sqlite3.Database(filename);
 
 router.get('/customers', function(req, res) {
-  // TODO: fix code here
   const sql = "select * from customers";
   db.all(sql, [], (err, rows) => {
     res.status(200).json({
@@ -35,7 +34,6 @@ router.get('/customers/:id', function(req, res) {
 
 
 router.get('/customers/name/:surname', function(req, res) {
-  // TODO: add code here
   const sql = `select * 
               from customers 
               where surname like '%${req.params.surname}%'`;
@@ -48,15 +46,6 @@ router.get('/customers/name/:surname', function(req, res) {
 
 
 router.post('/customers/', function(req, res) {
-  // EXPECTED JSON Object:
-  // {
-  //   title: 'Mr',
-  //   firstname: 'Laurie',
-  //   surname: 'Ainley',
-  //   email: 'laurie@ainley.com'
-  // }
-
-  // TODO: add code here
   if(req.body.title.length != 0 && req.body.firstname.length != 0 && req.body.surname.length != 0 && req.body.email.length != 0){
     db.run(`insert into 
             customers (title, 
@@ -87,50 +76,76 @@ router.put('/customers/:id', function(req, res) {
         );
 });
 
+router.get('/reservations', function(req, res) {
+  const sql = "select * from reservations";
+  db.all(sql, [], (err, rows) => {
+    res.status(200).json({
+      reservations: rows
+    });
+  });
+});
 
-// get '/reservations'
-// TODO: add code here
+router.get('/reservations/:id', function(req, res) {
+  if(isNaN(Number(req.params.id))){
+    res.status(400).send("Check user ID in the link path");
+  } else {
+    const sql = `select * 
+            from reservations 
+            where reservation_id = ${req.params.id}`;
+    db.all(sql, [], (err, rows) => {
+      res.status(200).json({
+        reservations: rows
+      });
+    });
+  }
+});
 
+router.delete('/reservations/:id', (req, res) => {
+  db.run(`delete from 
+          reservations where
+          reservation_id = ${req.params.id}`);
+});
 
-// get '/reservations/:id'
-// TODO: add code here
+router.get('/reservations/starting-on/:startDate', (req, res) => {
+  const sql = `select * 
+            from reservations 
+            where check_in_date = '${req.params.startDate}'`;
+  db.all(sql, [], (err, rows) => {
+    res.status(200).json({
+      reservations: rows
+    });
+  });
+});
 
-
-// delete '/reservations/:id'
-// TODO: add code here
-
-
-// get '/reservations/starting-on/:startDate'
-// TODO: add code here
-
+router.get('/reservations/active-on/:date', (req, res) => {
+  const sql = `select * 
+            from reservations 
+            where check_in_date >= '${req.params.date}'`;
+  db.all(sql, [], (err, rows) => {
+    res.status(200).json({
+      reservations: rows
+    });
+  });
+});
 
 // get '/reservations/active-on/:date'
 // TODO: add code here
 
 router.post('/reservations/', function(req, res) {
-// EXPECTED JSON Object:
-// {
-//   customer_id: 1,
-//   room_id: 1,
-//   check_in_date: '2018-01-20',
-//   check_out_date: '2018-01-22',
-//   room_price: 129.90
-// }
-
-  // TODO: add code here
-  if(req.body.customer_id.length != 0 && req.body.room_id.length != 0 && req.body.check_in_date.length != 0 && req.body.check_out_date.length != 0 && req.body.room_price != 0){
+  if(req.body.customer_id.length != 0 && req.body.room_id.length != 0 && req.body.check_in_date.length != 0 && req.body.check_out_date.length != 0 && req.body.price_per_night != 0){
     db.run(`insert into 
             reservations (customer_id, 
                       room_id, 
                       check_in_date, 
                       check_out_date,
-                      room_price) 
+                      price_per_night) 
             values ('${req.body.customer_id}', 
                     '${req.body.room_id}', 
                     '${req.body.check_in_date}', 
                     '${req.body.check_out_date}',
-                    '${req.body.room_price}')`
+                    '${req.body.price_per_night}')`
     );
+    console.log(req.body.price_per_night);
   } else {
     res.status(400);
     console.log("Check your request");
