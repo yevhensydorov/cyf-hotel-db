@@ -120,7 +120,7 @@ router.get('/reservations/starting-on/:startDate', (req, res) => {
 router.get('/reservations/active-on/:date', (req, res) => {
   const sql = `select * 
             from reservations 
-            where check_in_date >= '${req.params.date}'`;
+            where check_in_date < '${req.params.date}' and check_out_date > '${req.params.date}'`;
   db.all(sql, [], (err, rows) => {
     res.status(200).json({
       reservations: rows
