@@ -10,6 +10,7 @@ create table customers (
 	email 												varchar
 );
 
+
 -- ROOM_TYPES
 
 create table room_types (

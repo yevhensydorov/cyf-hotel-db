@@ -171,8 +171,10 @@ router.get('/reservations-and-invoices', (req, res) => {
 
 router.get('/reservations-per-customer/', (req, res) => {
   const sql = `select customers.firstname, customers.surname, 
-               reservations.customer_id, count(*) as num_of_res 
-               from reservations as reservations JOIN customers 
+               reservations.customer_id, 
+               count(*) as num_of_res 
+               from reservations as reservations 
+               JOIN customers 
                on (customers.customer_id = reservations.customer_id) 
                group by customers.customer_id;`;
   db.all(sql, [], (err, rows) => {
@@ -184,11 +186,12 @@ router.get('/reservations-per-customer/', (req, res) => {
 
 router.get('/num-of-reservations-per-room-id/', (req, res) => {
   const sql = `select rooms.room_id, rooms.sea_view, 
-               room_types.type_name, count(*) as num_of_res 
-               from rooms join reservations on 
-               reservations.room_id = rooms.room_id 
-               join room_types on 
-               rooms.room_type_id = room_types.room_type_id 
+               room_types.type_name, 
+               count(*) as num_of_res 
+               from rooms join reservations 
+               on reservations.room_id = rooms.room_id 
+               join room_types 
+               on rooms.room_type_id = room_types.room_type_id 
                group by reservations.room_id;`;
   db.all(sql, [], (err, rows) => {
     res.status(200).json({
@@ -202,9 +205,11 @@ router.get('/reservations/details-between/:from_day/:to_day/', (req, res) => {
                customers.title, customers.firstname,
                customers.surname, customers.email,
                reservations.check_in_date, reservations.check_out_date,
-               rooms.sea_view from reservations join customers
+               rooms.sea_view from reservations 
+               join customers
                on reservations.customer_id = customers.customer_id 
-               join rooms on reservations.room_id = rooms.room_id 
+               join rooms 
+               on reservations.room_id = rooms.room_id 
                where check_in_date between '${req.params.from_day}' and '${req.params.to_day}';`;
   db.all(sql, [], (err, rows) => {
     res.status(200).json({
@@ -212,6 +217,28 @@ router.get('/reservations/details-between/:from_day/:to_day/', (req, res) => {
     });
   });
 });
+
+router.get('/customers-data', (req, res) => {
+  var sql = `select customers.customer_id,
+     customers.title, 
+     customers.firstname, 
+     customers.surname, 
+     customers.email, 
+     reservations.room_id, 
+     reservations.check_in_date, 
+     reservations.check_out_date from reservations JOIN customers ON reservations.customer_id = customers.customer_id`
+
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      res.status(500).end()
+      console.log(err)
+    } else {
+      res.status(200).json({
+        rows
+      })
+    }
+  })
+})
 
 // get `/detailed-invoices'
 // TODO: add code here
